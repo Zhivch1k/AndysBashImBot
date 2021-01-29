@@ -35,7 +35,7 @@ Telegram::Bot::Client.run(token) do |bot|
         )
       end
 
-      bot.api.answer_inline_query(inline_query_id: message.id, results: results)
+      bot.api.answer_inline_query(inline_query_id: message.id, cache_time: 0, results: results)
     
     when Telegram::Bot::Types::Message
       bot.api.send_message(chat_id: message.chat.id, text: "Держи цитатку, #{message.from.first_name}:\n")
