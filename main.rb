@@ -17,9 +17,13 @@ def generate_all
 end
 
 Telegram::Bot::Client.run(token) do |bot|
+  File.write('./log', 'The bot has started at ' + (Time.now).to_s + "\n\n")
+
   bot.listen do |message|
     case message
     when Telegram::Bot::Types::InlineQuery
+      File.write('./log', "User #{message.from.username} has used an inlineQuery at " + (Time.now).to_s + "\n", mode: 'a')
+
       id, body, link = generate_all
       random_res_id = rand(10000)
 
@@ -38,6 +42,7 @@ Telegram::Bot::Client.run(token) do |bot|
       bot.api.answer_inline_query(inline_query_id: message.id, cache_time: 0, results: results)
     
     when Telegram::Bot::Types::Message
+      File.write('./log', "User #{message.from.username} has written a message at " + (Time.now).to_s + "\n", mode: 'a')
       button = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: [%w[One_more]])
       
       bot.api.send_message(chat_id: message.chat.id, text: "Держи цитатку, #{message.from.first_name}:\n")
