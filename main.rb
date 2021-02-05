@@ -1,7 +1,7 @@
 require 'telegram/bot'
 require_relative 'BashQuote'
 
-token = '1636211923:AAFlDfQ_uPPfPfdVQP11tzA0eZRBceWePt4'
+token = 'token'
 
 def generate_message
   bq = BashQuote.new
