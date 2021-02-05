@@ -38,8 +38,10 @@ Telegram::Bot::Client.run(token) do |bot|
       bot.api.answer_inline_query(inline_query_id: message.id, cache_time: 0, results: results)
     
     when Telegram::Bot::Types::Message
+      button = Telegram::Bot::Types::ReplyKeyboardMarkup.new(keyboard: [%w[One_more]])
+      
       bot.api.send_message(chat_id: message.chat.id, text: "Держи цитатку, #{message.from.first_name}:\n")
-      bot.api.send_message(chat_id: message.chat.id, disable_web_page_preview: true, text: generate_message)
+      bot.api.send_message(chat_id: message.chat.id, disable_web_page_preview: true, text: generate_message, reply_markup: button)
     end
   end
 end
