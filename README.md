@@ -30,4 +30,4 @@ Example of messaging with the bot in a chat.
 * <img src="examples/bot.gif" alt="Example gif" width="403" height="551">
 
 Example of using the bot in an inline mode.
-* <img src="examples/bot.gif" alt="Example gif" width="468" height="250">
+* <img src="examples/bot.gif" alt="Example gif" width="468" height="420">
